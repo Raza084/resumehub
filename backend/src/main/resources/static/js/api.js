@@ -1,7 +1,11 @@
 (function () {
   const TOKEN_KEY = "resumehub.authToken.v1";
   const USER_KEY = "resumehub.authUser.v1";
-  const API_BASE = window.RESUMEHUB_API_BASE || "http://localhost:8080/api";
+  const API_BASE = window.RESUMEHUB_API_BASE || (
+    window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1"
+      ? "http://localhost:8080/api"
+      : `${window.location.origin}/api`
+  );
 
   function getToken() {
     return localStorage.getItem(TOKEN_KEY);
