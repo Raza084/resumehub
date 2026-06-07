@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ResumeHub | Login</title>
+    <link rel="icon" type="image/png" href="/assets/icons/favicon-32.png" />
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/auth.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  </head>
+  <body class="auth-page" data-auth-mode="login">
+    <header class="navbar">
+      <a class="logo" href="/">
+        <img class="logo-image" src="/assets/icons/resumehub-logo.png" alt="ResumeHub" />
+      </a>
+      <a class="navbar-wordmark" href="/" aria-label="ResumeHub home">
+        Resume<span>Hub</span>
+      </a>
+      <nav>
+        <ul class="nav-links"></ul>
+      </nav>
+      <div class="auth-buttons"></div>
+    </header>
+
+    <main>
+      <section class="auth-card">
+        <h1>Welcome back</h1>
+        <p>Sign in to access your saved resumes and dashboard.</p>
+        <div id="authError" class="auth-error hidden"></div>
+        <form id="authForm" class="auth-form">
+          <label>
+            Email
+            <input type="email" name="email" required placeholder="name@email.com" />
+          </label>
+          <label>
+            Password
+            <input type="password" name="password" required minlength="6" placeholder="Your password" />
+          </label>
+          <div class="forgot-password-container">
+            <a href="/forgot-password" class="forgot-password-link">Forgot Password?</a>
+          </div>
+          <button id="authSubmit" class="primary-btn" type="submit">Sign In</button>
+        </form>
+        <p class="auth-switch">New to ResumeHub? <a href="/register">Create an account</a></p>
+      </section>
+    </main>
+
+    <script src="/js/api.js"></script>
+    <script src="/js/auth.js"></script>
+  </body>
+</html>

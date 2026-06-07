@@ -1,0 +1,146 @@
+.resume-page {
+  --resume-accent: #0f766e;
+  width: 794px;
+  min-height: 1123px;
+  margin: 0 auto;
+  background: #ffffff;
+  color: #111111;
+  font-family: Arial, Helvetica, sans-serif;
+  line-height: 1.35;
+  padding: 34px 42px;
+  box-shadow: 0 22px 55px rgba(15, 23, 42, 0.15);
+}
+
+.resume-page.font-serif {
+  font-family: Georgia, "Times New Roman", serif;
+}
+
+.resume-page.font-sans {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.resume-page.font-mono {
+  font-family: "Courier New", monospace;
+}
+
+.resume-page.spacing-compact {
+  line-height: 1.22;
+}
+
+.resume-page.spacing-relaxed {
+  line-height: 1.52;
+}
+
+.resume-header {
+  border-bottom: 2px solid var(--resume-accent);
+  padding-bottom: 10px;
+  margin-bottom: 14px;
+}
+
+.resume-header h1 {
+  font-size: 28px;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.resume-header h2 {
+  color: #333333;
+  font-size: 14px;
+  font-weight: 500;
+  margin-top: 4px;
+}
+
+.contact-info {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px 13px;
+  margin-top: 8px;
+  font-size: 11.8px;
+}
+
+.contact-info a,
+.resume-links a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.resume-section {
+  margin-bottom: 13px;
+}
+
+.resume-section h3 {
+  border-bottom: 1px solid var(--resume-accent);
+  color: var(--resume-accent);
+  font-size: 13.5px;
+  margin-bottom: 6px;
+  padding-bottom: 2px;
+  text-transform: uppercase;
+}
+
+.resume-section p,
+.resume-item li {
+  color: #222222;
+  font-size: 12px;
+}
+
+.skills-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px 14px;
+  font-size: 12px;
+}
+
+.resume-item {
+  margin-bottom: 9px;
+}
+
+.item-top {
+  align-items: baseline;
+  display: flex;
+  gap: 18px;
+  justify-content: space-between;
+}
+
+.item-top h4 {
+  font-size: 12.8px;
+}
+
+.item-top span,
+.muted {
+  color: #444444;
+  font-size: 11.4px;
+}
+
+.resume-links {
+  color: var(--resume-accent);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  font-size: 11.6px;
+  margin-top: 2px;
+}
+
+.spacing-compact .resume-section {
+  margin-bottom: 9px;
+}
+
+.spacing-relaxed .resume-section {
+  margin-bottom: 18px;
+}
+
+.resume-item,
+.resume-section {
+  break-inside: avoid;
+  page-break-inside: avoid;
+}
+
+.hidden {
+  display: none;
+}
+
+@media print {
+  .resume-page {
+    box-shadow: none;
+    margin: 0;
+  }
+}

@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ResumeHub | Register</title>
+    <link rel="icon" type="image/png" href="/assets/icons/favicon-32.png" />
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/auth.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  </head>
+  <body class="auth-page" data-auth-mode="register">
+    <header class="navbar">
+      <a class="logo" href="/">
+        <img class="logo-image" src="/assets/icons/resumehub-logo.png" alt="ResumeHub" />
+      </a>
+      <a class="navbar-wordmark" href="/" aria-label="ResumeHub home">
+        Resume<span>Hub</span>
+      </a>
+      <nav>
+        <ul class="nav-links"></ul>
+      </nav>
+      <div class="auth-buttons"></div>
+    </header>
+
+    <main>
+      <section class="auth-card">
+        <h1>Create your account</h1>
+        <p>Register to save resumes, manage templates, and export anytime.</p>
+        <div id="authError" class="auth-error hidden"></div>
+        <form id="authForm" class="auth-form">
+          <label>
+            Full Name
+            <input type="text" name="name" required minlength="2" placeholder="Your name" />
+          </label>
+          <label>
+            Email
+            <input type="email" name="email" required placeholder="name@email.com" />
+          </label>
+          <label>
+            Password
+            <input type="password" name="password" required minlength="6" placeholder="At least 6 characters" />
+          </label>
+          <button id="authSubmit" class="primary-btn" type="submit">Create Account</button>
+        </form>
+        <p class="auth-switch">Already have an account? <a href="/login">Sign in</a></p>
+      </section>
+    </main>
+
+    <script src="/js/api.js"></script>
+    <script src="/js/auth.js"></script>
+  </body>
+</html>

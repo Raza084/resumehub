@@ -1,0 +1,50 @@
+.resume-page {
+  --resume-accent: #0f766e;
+  width: 794px;
+  min-height: 1123px;
+  margin: 0 auto;
+  background: #ffffff;
+  color: #111827;
+  font-family: Arial, Helvetica, sans-serif;
+  line-height: 1.4;
+  box-shadow: 0 22px 55px rgba(15, 23, 42, 0.15);
+}
+
+.resume-page.font-serif { font-family: Georgia, "Times New Roman", serif; }
+.resume-page.font-sans { font-family: Arial, Helvetica, sans-serif; }
+.resume-page.font-mono { font-family: "Courier New", monospace; }
+.resume-page.spacing-compact { line-height: 1.25; }
+.resume-page.spacing-relaxed { line-height: 1.58; }
+
+.contact-info a,
+.resume-links a { color: inherit; text-decoration: none; }
+.resume-section { margin-bottom: 18px; }
+.resume-section h3 { color: var(--resume-accent); font-size: 12px; letter-spacing: 0; margin-bottom: 8px; text-transform: uppercase; }
+.resume-section p { font-size: 12px; }
+.skills-list { display: flex; flex-wrap: wrap; gap: 7px; }
+.skills-list span { font-size: 11px; }
+.resume-item { margin-bottom: 13px; }
+.item-top { align-items: baseline; display: flex; gap: 14px; justify-content: space-between; }
+.item-top h4 { font-size: 13px; }
+.item-top span,
+.muted { color: #5b6472; font-size: 11px; }
+.resume-links { color: var(--resume-accent); display: flex; flex-wrap: wrap; gap: 10px; font-size: 11px; margin-top: 4px; }
+.resume-item,
+.resume-section { break-inside: avoid; page-break-inside: avoid; }
+.hidden { display: none; }
+.spacing-compact .resume-section { margin-bottom: 12px; }
+.spacing-relaxed .resume-section { margin-bottom: 24px; }
+
+.resume-page { padding: 30px 40px; line-height: 1.28; }
+.resume-header { border-bottom: 2px solid var(--resume-accent); margin-bottom: 12px; padding-bottom: 10px; }
+.resume-kicker { display: none; }
+.resume-header h1 { font-size: 27px; line-height: 1; text-transform: uppercase; }
+.resume-header h2 { color: #475569; font-size: 13px; font-weight: 600; margin-top: 4px; }
+.contact-info { display: flex; flex-wrap: wrap; gap: 5px 12px; margin-top: 8px; font-size: 10.5px; }
+.resume-section { margin-bottom: 10px; }
+.resume-section h3 { border-bottom: 1px solid #cbd5e1; margin-bottom: 5px; padding-bottom: 2px; }
+.resume-section p { font-size: 11.4px; }
+.skills-list { gap: 4px 10px; }
+.resume-item { margin-bottom: 7px; }
+.item-top h4 { font-size: 12px; }
+.item-top span, .muted, .resume-links { font-size: 10.3px; }

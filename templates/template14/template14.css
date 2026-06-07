@@ -1,0 +1,47 @@
+.resume-page {
+  --resume-accent: #b45309;
+  width: 794px;
+  min-height: 1123px;
+  margin: 0 auto;
+  background: var(--resume-page-tint);
+  color: #211a12;
+  font-family: Arial, Helvetica, sans-serif;
+  line-height: 1.4;
+  box-shadow: 0 22px 55px rgba(15, 23, 42, 0.15);
+}
+
+.resume-page.font-serif { font-family: Georgia, "Times New Roman", serif; }
+.resume-page.font-sans { font-family: Arial, Helvetica, sans-serif; }
+.resume-page.font-mono { font-family: "Courier New", monospace; }
+.resume-page.spacing-compact { line-height: 1.25; }
+.resume-page.spacing-relaxed { line-height: 1.58; }
+
+.contact-info a,
+.resume-links a { color: inherit; text-decoration: none; }
+.resume-section { margin-bottom: 18px; }
+.resume-section h3 { color: var(--resume-accent); font-size: 12px; letter-spacing: 0; margin-bottom: 8px; text-transform: uppercase; }
+.resume-section p { font-size: 12px; }
+.skills-list { display: flex; flex-wrap: wrap; gap: 7px; }
+.skills-list span { font-size: 11px; }
+.resume-item { margin-bottom: 13px; }
+.item-top { align-items: baseline; display: flex; gap: 14px; justify-content: space-between; }
+.item-top h4 { font-size: 13px; }
+.item-top span,
+.muted { color: #5b6472; font-size: 11px; }
+.resume-links { color: var(--resume-accent); display: flex; flex-wrap: wrap; gap: 10px; font-size: 11px; margin-top: 4px; }
+.resume-item,
+.resume-section { break-inside: avoid; page-break-inside: avoid; }
+.hidden { display: none; }
+.spacing-compact .resume-section { margin-bottom: 12px; }
+.spacing-relaxed .resume-section { margin-bottom: 24px; }
+
+.resume-page { padding: 42px 52px; }
+.resume-header { background: var(--resume-accent-light); border-bottom: 2px solid var(--resume-accent); margin: -42px -52px 22px; padding: 34px 52px 20px; }
+.resume-kicker { color: var(--resume-accent); font-size: 10px; font-weight: 700; text-transform: uppercase; }
+.resume-header h1 { font-size: 34px; line-height: 1; margin-top: 5px; }
+.resume-header h2 { color: var(--resume-accent-text); font-size: 14px; font-weight: 500; margin-top: 7px; }
+.contact-info { display: flex; flex-wrap: wrap; gap: 7px 14px; margin-top: 12px; font-size: 11px; }
+.resume-section h3 { color: var(--resume-accent); }
+.skills-list span { background: var(--resume-accent-muted); border-radius: 999px; padding: 5px 8px; }
+.resume-item { border-left: 2px solid var(--resume-accent-muted); padding-left: 14px; position: relative; }
+.resume-item::before { background: #ffffff; border: 2px solid var(--resume-accent); border-radius: 50%; content: ""; height: 8px; left: -7px; position: absolute; top: 4px; width: 8px; }

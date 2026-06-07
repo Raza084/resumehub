@@ -1,0 +1,412 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ResumeHub Studio | Premium Resume Builder</title>
+    <link rel="icon" type="image/png" href="/assets/icons/favicon-32.png" />
+    <link rel="shortcut icon" href="/assets/icons/favicon.ico" />
+    <link rel="apple-touch-icon" href="/assets/icons/apple-touch-icon.png" />
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/builder.css" />
+    <link rel="stylesheet" href="/css/responsive.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.6.2/cropper.min.css" />
+  </head>
+  <body class="builder-body">
+    <header class="topbar">
+      <a class="brand-link" href="/">
+        <img class="logo-image" src="/assets/icons/resumehub-logo.png" alt="ResumeHub" />
+      </a>
+      <div class="topbar-actions">
+        <select id="templateSelect" aria-label="Select resume template">
+          <option value="template1">ATS Single Column</option>
+          <option value="template2">Sidebar Split</option>
+          <option value="template3">Minimal Serif</option>
+          <option value="template4">Executive Ledger</option>
+          <option value="template5">Creative Accent</option>
+          <option value="template6">Technical Grid</option>
+          <option value="template7">Academic CV</option>
+          <option value="template8">Compact One Page</option>
+          <option value="template9">Portfolio Canvas</option>
+          <option value="template10">Metrics Dashboard</option>
+          <option value="template11">Corporate Blue</option>
+          <option value="template12">Bold Header</option>
+          <option value="template13">Two Column</option>
+          <option value="template14">Timeline Layout</option>
+          <option value="template15">Fresher Clean</option>
+          <option value="template16">Rounded Bands</option>
+          <option value="template17">Vertical Rule</option>
+          <option value="template18">Gold Accent</option>
+          <option value="template19">Centered Lines</option>
+          <option value="template20">Sidebar Timeline</option>
+          <option value="template21">Photo Sidebar</option>
+        </select>
+        <label class="file-import-btn">
+          <i class="fa-solid fa-file-lines"></i>
+          Import Resume
+          <input id="resumeImportInput" type="file" accept="application/pdf,.pdf,text/plain,.txt" />
+        </label>
+        <button class="ghost-btn" id="sampleDataBtn" type="button">
+          <i class="fa-solid fa-wand-magic-sparkles"></i>
+          Sample Profile
+        </button>
+        <button class="ghost-btn" id="undoBtn" type="button" title="Undo (Ctrl+Z)" disabled>
+          <i class="fa-solid fa-rotate-left"></i>
+        </button>
+        <button class="ghost-btn" id="redoBtn" type="button" title="Redo (Ctrl+Y)" disabled>
+          <i class="fa-solid fa-rotate-right"></i>
+        </button>
+        <button class="ghost-btn" id="darkModeBtn" type="button" title="Toggle dark mode" aria-pressed="false">
+          <i class="fa-solid fa-moon"></i>
+        </button>
+        <button class="ghost-btn" id="shortcutsBtn" type="button" title="Keyboard shortcuts (?)">
+          <i class="fa-solid fa-keyboard"></i>
+        </button>
+        <button class="ghost-btn" id="clearDataBtn" type="button">
+          <i class="fa-solid fa-rotate-left"></i>
+          Reset Draft
+        </button>
+        <a class="ghost-btn hidden" id="builderDashboardLink" href="/dashboard">Dashboard</a>
+        <button class="ghost-btn hidden" id="cloudSaveBtn" type="button" title="Save to your account">
+          <i class="fa-solid fa-cloud-arrow-up"></i>
+          Save to Account
+        </button>
+        <button class="download-btn" type="button">
+          <i class="fa-solid fa-file-arrow-down"></i>
+          Export PDF
+        </button>
+      </div>
+    </header>
+
+    <main class="builder-container">
+      <section class="form-section" aria-label="Resume form">
+        <div class="status-bar">
+          <span id="saveStatus">Draft secured</span>
+          <div class="score-group">
+            <span id="resumeScore">Strength 0%</span>
+            <span id="atsScore">ATS 0%</span>
+          </div>
+        </div>
+
+        <div class="form-card validation-card" id="validationCard">
+          <div class="section-title">
+            <h3>Resume Strength &amp; ATS</h3>
+            <span id="validationSummary">Ready to refine</span>
+          </div>
+          <ul id="validationList"></ul>
+        </div>
+
+        <form id="resumeForm">
+          <div class="form-card">
+            <div class="section-title">
+              <h3>Visual Style</h3>
+            </div>
+            <div class="theme-grid">
+              <label>
+                Accent Color
+                <input type="color" name="accentColor" value="#0f766e" />
+              </label>
+              <label>
+                Typography
+                <select name="fontFamily">
+                  <option value="sans">Premium Sans</option>
+                  <option value="serif">Editorial Serif</option>
+                  <option value="mono">Technical Mono</option>
+                  <option value="poppins">Modern Poppins</option>
+                  <option value="georgia">Classic Georgia</option>
+                  <option value="verdana">Readable Verdana</option>
+                  <option value="trebuchet">Friendly Trebuchet</option>
+                  <option value="garamond">Elegant Garamond</option>
+                  <option value="system">System Professional</option>
+                </select>
+              </label>
+              <label>
+                Layout Rhythm
+                <select name="spacing">
+                  <option value="compact">Compact</option>
+                  <option value="normal">Balanced</option>
+                  <option value="relaxed">Airy</option>
+                </select>
+              </label>
+            </div>
+          </div>
+
+          <div class="form-card">
+            <div class="section-title">
+              <h3>Identity Details</h3>
+            </div>
+            <div class="photo-upload-row">
+              <div class="photo-preview-box">
+                <img id="photoPreview" class="hidden" alt="Selected profile preview" />
+                <i class="fa-solid fa-user"></i>
+              </div>
+              <div class="photo-upload-actions">
+                <strong>Profile Portrait</strong>
+                <p id="photoHelpText">Add or refine a polished portrait for selected visual templates.</p>
+                <div class="photo-buttons">
+                  <label class="photo-upload-btn">
+                    <i class="fa-solid fa-image"></i>
+                    Upload Portrait
+                    <input id="photoInput" type="file" accept="image/*" />
+                  </label>
+                  <button class="delete-btn hidden" id="removePhotoBtn" type="button">
+                    Remove
+                  </button>
+                </div>
+                <div class="photo-options">
+                  <label>
+                    Shape
+                    <select name="photoShape">
+                      <option value="circle">Circle</option>
+                      <option value="rounded">Rounded</option>
+                      <option value="square">Square</option>
+                    </select>
+                  </label>
+                  <label>
+                    Size
+                    <select name="photoSize">
+                      <option value="small">Small</option>
+                      <option value="medium">Medium</option>
+                      <option value="large">Large</option>
+                    </select>
+                  </label>
+                  <label>
+                    Placement
+                    <select name="photoPosition">
+                      <option value="top">Top</option>
+                      <option value="center">Center</option>
+                      <option value="right">Right</option>
+                    </select>
+                  </label>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <label>
+                Full Name
+                <input type="text" name="fullName" placeholder="Sundar Pichai" />
+              </label>
+              <label>
+                Professional Title
+                <input type="text" name="jobRole" placeholder="Full Stack Developer" />
+              </label>
+            </div>
+            <div class="row">
+              <label>
+                Email
+                <input type="email" name="email" placeholder="name@email.com" />
+              </label>
+              <label>
+                Phone
+                <input type="tel" name="phone" placeholder="+91 98765 43210" />
+              </label>
+            </div>
+            <div class="row">
+              <label>
+                Location
+                <input type="text" name="location" placeholder="Gadag, India" />
+              </label>
+              <label>
+                Portfolio / Website
+                <input type="text" name="portfolio" placeholder="portfolio.com" />
+              </label>
+            </div>
+            <div class="row">
+              <label>
+                LinkedIn
+                <input type="text" name="linkedin" placeholder="linkedin.com/in/username" />
+              </label>
+              <label>
+                GitHub
+                <input type="text" name="github" placeholder="github.com/username" />
+              </label>
+            </div>
+          </div>
+
+          <div id="sectionOrderEditor" class="section-order-editor">
+            <div class="form-card repeat-card" data-section="summary">
+              <div class="section-title">
+                <button class="drag-handle section-drag-handle" type="button" data-section-drag-handle draggable="true" aria-label="Drag to reorder Executive Summary section">
+                  <i class="fa-solid fa-grip-vertical"></i>
+                </button>
+                <h3>Executive Summary</h3>
+                <div class="section-actions">
+                  <button class="toggle-btn" type="button" data-toggle="summary">
+                    Hide
+                  </button>
+                </div>
+              </div>
+              <div class="items-editor-wrapper" style="margin-top: 12px; width: 100%;">
+                <label>
+                  Summary
+                  <textarea
+                    name="summary"
+                    rows="5"
+                    placeholder="Write a sharp 2-4 line pitch around role, strengths, outcomes, and impact."
+                  ></textarea>
+                </label>
+              </div>
+            </div>
+
+            <div class="form-card repeat-card" data-section="skills">
+              <div class="section-title">
+                <button class="drag-handle section-drag-handle" type="button" data-section-drag-handle draggable="true" aria-label="Drag to reorder Core Skills section">
+                  <i class="fa-solid fa-grip-vertical"></i>
+                </button>
+                <h3>Core Skills</h3>
+                <div class="section-actions">
+                  <button class="toggle-btn" type="button" data-toggle="skills">
+                    Hide
+                  </button>
+                </div>
+              </div>
+              <div class="items-editor-wrapper" style="margin-top: 12px; width: 100%;">
+                <div id="skillsEditorContainer" style="display: flex; flex-direction: column; gap: 8px; width: 100%;"></div>
+                <button class="ghost-btn" id="addSkillsGroupBtn" type="button" style="margin-top: 12px; align-self: flex-start;">
+                  <i class="fa-solid fa-plus"></i> Add Skill Group / Category
+                </button>
+              </div>
+            </div>
+          <div class="form-card repeat-card" data-section="experience">
+            <div class="section-title">
+              <button class="drag-handle section-drag-handle" type="button" data-section-drag-handle draggable="true" aria-label="Drag to reorder Professional Experience section">
+                <i class="fa-solid fa-grip-vertical"></i>
+              </button>
+              <h3>Professional Experience</h3>
+              <div class="section-actions">
+                <button class="toggle-btn" type="button" data-toggle="experience">
+                  Hide
+                </button>
+                <button class="add-btn" type="button" data-add="experience">
+                  <i class="fa-solid fa-plus"></i>
+                  Add
+                </button>
+              </div>
+            </div>
+            <div class="items-editor" id="experienceEditor"></div>
+          </div>
+
+          <div class="form-card repeat-card" data-section="projects">
+            <div class="section-title">
+              <button class="drag-handle section-drag-handle" type="button" data-section-drag-handle draggable="true" aria-label="Drag to reorder Signature Projects section">
+                <i class="fa-solid fa-grip-vertical"></i>
+              </button>
+              <h3>Signature Projects</h3>
+              <div class="section-actions">
+                <button class="toggle-btn" type="button" data-toggle="projects">
+                  Hide
+                </button>
+                <button class="add-btn" type="button" data-add="projects">
+                  <i class="fa-solid fa-plus"></i>
+                  Add
+                </button>
+              </div>
+            </div>
+            <div class="items-editor" id="projectsEditor"></div>
+          </div>
+
+          <div class="form-card repeat-card" data-section="education">
+            <div class="section-title">
+              <button class="drag-handle section-drag-handle" type="button" data-section-drag-handle draggable="true" aria-label="Drag to reorder Education section">
+                <i class="fa-solid fa-grip-vertical"></i>
+              </button>
+              <h3>Education</h3>
+              <div class="section-actions">
+                <button class="toggle-btn" type="button" data-toggle="education">
+                  Hide
+                </button>
+                <button class="add-btn" type="button" data-add="education">
+                  <i class="fa-solid fa-plus"></i>
+                  Add
+                </button>
+              </div>
+            </div>
+            <div class="items-editor" id="educationEditor"></div>
+          </div>
+
+          <div class="form-card repeat-card" data-section="certifications">
+            <div class="section-title">
+              <button class="drag-handle section-drag-handle" type="button" data-section-drag-handle draggable="true" aria-label="Drag to reorder Certifications section">
+                <i class="fa-solid fa-grip-vertical"></i>
+              </button>
+              <h3>Certifications & Credentials</h3>
+              <div class="section-actions">
+                <button class="toggle-btn" type="button" data-toggle="certifications">
+                  Hide
+                </button>
+                <button class="add-btn" type="button" data-add="certifications">
+                  <i class="fa-solid fa-plus"></i>
+                  Add
+                </button>
+              </div>
+            </div>
+            <div class="items-editor" id="certificationsEditor"></div>
+          </div>
+          </div>
+        </form>
+      </section>
+
+      <section class="preview-section" aria-label="Resume preview">
+        <div class="preview-toolbar">
+          <strong>Live Preview</strong>
+          <span>Refine the content, review the layout, and export when it feels interview-ready.</span>
+        </div>
+        <div id="templatePreviewContainer"></div>
+      </section>
+    </main>
+
+    <div class="shortcuts-modal hidden" id="shortcutsModal" role="dialog" aria-labelledby="shortcutsTitle" aria-modal="true">
+      <div class="shortcuts-backdrop" data-close-shortcuts></div>
+      <div class="shortcuts-panel">
+        <div class="shortcuts-header">
+          <h2 id="shortcutsTitle">Keyboard Shortcuts</h2>
+          <button class="ghost-btn shortcuts-close" type="button" data-close-shortcuts aria-label="Close">
+            <i class="fa-solid fa-xmark"></i>
+          </button>
+        </div>
+        <ul class="shortcuts-list">
+          <li><kbd>Ctrl</kbd> + <kbd>Z</kbd><span>Undo last change</span></li>
+          <li><kbd>Ctrl</kbd> + <kbd>Y</kbd><span>Redo</span></li>
+          <li><kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>Z</kbd><span>Redo (alternate)</span></li>
+          <li><kbd>Ctrl</kbd> + <kbd>S</kbd><span>Save draft</span></li>
+          <li><kbd>Ctrl</kbd> + <kbd>P</kbd><span>Export PDF</span></li>
+          <li><kbd>?</kbd><span>Show this panel</span></li>
+          <li><kbd>Esc</kbd><span>Close panel</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Photo Crop Modal -->
+    <div class="crop-modal hidden" id="cropModal" role="dialog" aria-labelledby="cropTitle" aria-modal="true">
+      <div class="crop-backdrop" id="cropBackdrop"></div>
+      <div class="crop-panel">
+        <div class="crop-header">
+          <h2 id="cropTitle">Crop Profile Photo</h2>
+          <button class="ghost-btn crop-close" type="button" id="cropCloseBtn" aria-label="Close">
+            <i class="fa-solid fa-xmark"></i>
+          </button>
+        </div>
+        <div class="crop-body">
+          <div class="crop-image-container">
+            <img id="cropImage" src="" alt="Image to crop" />
+          </div>
+        </div>
+        <div class="crop-footer">
+          <button class="ghost-btn" type="button" id="cropCancelBtn">Cancel</button>
+          <button class="download-btn" type="button" id="cropSaveBtn">Crop & Save</button>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.6.2/cropper.min.js"></script>
+    <script src="/js/api.js"></script>
+    <script src="/js/template-renderer.js"></script>
+    <script src="/js/pdf.js"></script>
+  </body>
+</html>

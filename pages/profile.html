@@ -1,0 +1,221 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ResumeHub | Profile</title>
+    <link rel="icon" type="image/png" href="/assets/icons/favicon-32.png" />
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/auth.css" />
+    <link rel="stylesheet" href="/css/profile.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  </head>
+  <body class="profile-body-page">
+    <header class="navbar">
+      <a class="logo" href="/">
+        <img class="logo-image" src="/assets/icons/resumehub-logo.png" alt="ResumeHub" />
+      </a>
+      <a class="navbar-wordmark" href="/" aria-label="ResumeHub home">
+        Resume<span>Hub</span>
+      </a>
+      <nav>
+        <ul class="nav-links"></ul>
+      </nav>
+      <div class="auth-buttons"></div>
+    </header>
+
+    <main class="profile-page">
+      <section class="profile-hero">
+        <div class="profile-hero-inner">
+          <div class="profile-hero-copy">
+            <p class="eyebrow">Account settings</p>
+            <h1>Manage your <span>profile</span></h1>
+            <p>Add a photo and your key professional details once — reuse them whenever you build a resume.</p>
+          </div>
+          <div class="profile-hero-card">
+            <div class="profile-avatar" id="profileAvatar" aria-hidden="true">
+              <img id="profileAvatarImage" class="profile-avatar-image hidden" alt="" />
+              <span id="profileAvatarInitials">—</span>
+            </div>
+            <div>
+              <p class="profile-hero-name" id="profileHeroName">Loading…</p>
+              <p class="profile-hero-role" id="profileHeroRole"></p>
+              <p class="profile-hero-email" id="profileHeroEmail">—</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="profile-content">
+        <article class="profile-card profile-card-wide">
+          <div class="profile-card-header">
+            <div class="profile-card-icon">
+              <i class="fa-solid fa-id-card"></i>
+            </div>
+            <div>
+              <h2>Professional profile</h2>
+              <p>Your photo and core details for resumes — job title, phone, location, and LinkedIn.</p>
+            </div>
+          </div>
+
+          <div class="profile-professional-layout">
+            <div class="profile-photo-panel">
+              <div class="profile-photo-preview-wrap">
+                <img id="profilePhotoPreview" class="profile-photo-preview hidden" alt="Profile photo preview" />
+                <div id="profilePhotoFallback" class="profile-photo-fallback">
+                  <i class="fa-solid fa-user"></i>
+                </div>
+              </div>
+              <div class="profile-photo-actions">
+                <label class="profile-photo-upload-btn">
+                  <i class="fa-solid fa-camera"></i>
+                  Upload photo
+                  <input id="profilePhotoInput" type="file" accept="image/*" hidden />
+                </label>
+                <button id="removeProfilePhotoBtn" class="profile-photo-remove hidden" type="button">
+                  Remove
+                </button>
+              </div>
+              <p class="profile-photo-hint">JPG or PNG, max 2 MB.</p>
+            </div>
+
+            <form id="professionalForm" class="profile-form profile-professional-fields">
+              <label>
+                Professional title
+                <div class="profile-input-wrap">
+                  <i class="fa-solid fa-briefcase"></i>
+                  <input type="text" name="jobTitle" placeholder="e.g. Software Engineer" />
+                </div>
+              </label>
+              <label>
+                Phone number
+                <div class="profile-input-wrap">
+                  <i class="fa-solid fa-phone"></i>
+                  <input type="tel" name="phone" placeholder="+1 555 010 1000" />
+                </div>
+              </label>
+              <label>
+                Location
+                <div class="profile-input-wrap">
+                  <i class="fa-solid fa-location-dot"></i>
+                  <input type="text" name="location" placeholder="City, Country" />
+                </div>
+              </label>
+              <label>
+                LinkedIn
+                <div class="profile-input-wrap">
+                  <i class="fa-brands fa-linkedin"></i>
+                  <input type="text" name="linkedin" placeholder="linkedin.com/in/your-profile" />
+                </div>
+              </label>
+              <button class="primary-btn profile-submit-btn" type="submit">
+                <i class="fa-solid fa-floppy-disk"></i>
+                Save professional profile
+              </button>
+            </form>
+          </div>
+          <p id="professionalMessage" class="form-message"></p>
+        </article>
+
+        <div class="profile-grid">
+          <article class="profile-card">
+            <div class="profile-card-header">
+              <div class="profile-card-icon">
+                <i class="fa-solid fa-user"></i>
+              </div>
+              <div>
+                <h2>Account details</h2>
+                <p>Your name and email used to sign in to ResumeHub.</p>
+              </div>
+            </div>
+            <form id="profileForm" class="profile-form">
+              <label>
+                Full name
+                <div class="profile-input-wrap">
+                  <i class="fa-regular fa-user"></i>
+                  <input type="text" name="name" required placeholder="Your full name" />
+                </div>
+              </label>
+              <label>
+                Email address
+                <div class="profile-input-wrap">
+                  <i class="fa-regular fa-envelope"></i>
+                  <input type="email" name="email" required placeholder="you@example.com" />
+                </div>
+              </label>
+              <button class="primary-btn profile-submit-btn" type="submit">
+                <i class="fa-solid fa-check"></i>
+                Save account details
+              </button>
+            </form>
+            <p id="profileMessage" class="form-message"></p>
+          </article>
+
+          <article class="profile-card">
+            <div class="profile-card-header">
+              <div class="profile-card-icon profile-card-icon-security">
+                <i class="fa-solid fa-shield-halved"></i>
+              </div>
+              <div>
+                <h2>Security</h2>
+                <p>Update your password to keep your account protected.</p>
+              </div>
+            </div>
+            <form id="passwordForm" class="profile-form">
+              <label>
+                Current password
+                <div class="profile-input-wrap">
+                  <i class="fa-solid fa-key"></i>
+                  <input type="password" name="currentPassword" required placeholder="Enter current password" />
+                </div>
+              </label>
+              <label>
+                New password
+                <div class="profile-input-wrap">
+                  <i class="fa-solid fa-lock"></i>
+                  <input
+                    type="password"
+                    name="newPassword"
+                    required
+                    minlength="6"
+                    placeholder="At least 6 characters"
+                  />
+                </div>
+              </label>
+              <p class="profile-password-hint">
+                <i class="fa-solid fa-circle-info"></i>
+                Use at least 6 characters for your new password.
+              </p>
+              <button class="secondary-btn profile-submit-btn" type="submit">
+                <i class="fa-solid fa-shield-halved"></i>
+                Update password
+              </button>
+            </form>
+            <p id="passwordMessage" class="form-message"></p>
+          </article>
+        </div>
+
+        <div class="profile-quick-links">
+          <a class="profile-quick-link" href="/">
+            <i class="fa-solid fa-house"></i>
+            <span>Home</span>
+            <i class="fa-solid fa-arrow-right profile-quick-link-arrow"></i>
+          </a>
+          <a class="profile-quick-link" href="/dashboard">
+            <i class="fa-solid fa-gauge-high"></i>
+            <span>Dashboard</span>
+            <i class="fa-solid fa-arrow-right profile-quick-link-arrow"></i>
+          </a>
+          <a class="profile-quick-link profile-logout-link" href="#" id="profileBottomLogout">
+            <i class="fa-solid fa-right-from-bracket"></i>
+            <span>Logout</span>
+            <i class="fa-solid fa-arrow-right profile-quick-link-arrow"></i>
+          </a>
+        </div>
+      </section>
+    </main>
+
+    <script src="/js/api.js"></script>
+    <script src="/js/profile.js"></script>
+  </body>
+</html>

@@ -1,0 +1,150 @@
+/* =========================
+   TABLET DEVICES
+========================= */
+
+@media (max-width: 1024px) {
+  .builder-container {
+    grid-template-columns: 1fr;
+  }
+
+  .form-section,
+  .preview-section {
+    height: auto;
+  }
+
+  .preview-section {
+    position: relative;
+
+    top: 0;
+  }
+
+  .resume-page {
+    width: 100%;
+
+    min-height: auto;
+
+    margin-top: 20px;
+  }
+}
+
+/* =========================
+   MOBILE DEVICES
+========================= */
+
+@media (max-width: 768px) {
+  .topbar {
+    padding: 15px 20px;
+
+    height: auto;
+
+    flex-direction: column;
+
+    gap: 15px;
+  }
+
+  .topbar-buttons {
+    width: 100%;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+
+    gap: 10px;
+  }
+
+  .download-btn {
+    width: 100%;
+  }
+
+  .builder-container {
+    display: flex;
+
+    flex-direction: column;
+  }
+
+  .form-section,
+  .preview-section {
+    padding: 20px;
+  }
+
+  .form-card {
+    padding: 20px;
+  }
+
+  .resume-page {
+    padding: 25px 20px;
+  }
+
+  .preview-header h1 {
+    font-size: 28px;
+  }
+
+  .preview-header h2 {
+    font-size: 18px;
+  }
+
+  .preview-contact {
+    flex-direction: column;
+
+    align-items: flex-start;
+
+    gap: 8px;
+  }
+
+  .row {
+    flex-direction: column;
+  }
+
+  .section-title {
+    flex-direction: column;
+
+    align-items: flex-start;
+
+    gap: 12px;
+  }
+
+  .section-actions {
+    width: 100%;
+
+    display: flex;
+
+    gap: 10px;
+  }
+
+  .add-btn,
+  .toggle-btn {
+    flex: 1;
+  }
+}
+
+/* =========================
+   SMALL MOBILE DEVICES
+========================= */
+
+@media (max-width: 480px) {
+  .logo h2 {
+    font-size: 24px;
+  }
+
+  .preview-header h1 {
+    font-size: 24px;
+  }
+
+  .preview-header h2 {
+    font-size: 16px;
+  }
+
+  .preview-block h3 {
+    font-size: 16px;
+  }
+
+  .form-card h3 {
+    font-size: 20px;
+  }
+
+  .resume-page {
+    padding: 20px 16px;
+  }
+}

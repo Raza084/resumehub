@@ -1,0 +1,123 @@
+.resume-page {
+  --resume-accent: #111111;
+  width: 794px;
+  min-height: 1123px;
+  margin: 0 auto;
+  background: #ffffff;
+  color: #111111;
+  font-family: Georgia, "Times New Roman", serif;
+  line-height: 1.34;
+  padding: 34px 30px;
+  box-shadow: 0 22px 55px rgba(15, 23, 42, 0.15);
+}
+
+.resume-page.font-serif { font-family: Georgia, "Times New Roman", serif; }
+.resume-page.font-sans { font-family: Arial, Helvetica, sans-serif; }
+.resume-page.font-mono { font-family: "Courier New", monospace; }
+.resume-page.spacing-compact { line-height: 1.22; }
+.resume-page.spacing-relaxed { line-height: 1.52; }
+
+.resume-header {
+  align-items: stretch;
+  display: grid;
+  gap: 24px;
+  grid-template-columns: 22px 1fr;
+  margin-bottom: 26px;
+}
+
+.header-bar {
+  background: var(--resume-accent);
+  min-height: 138px;
+}
+
+.resume-header h1 {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 31px;
+  line-height: 1.05;
+}
+
+.resume-header h2 {
+  font-size: 14px;
+  font-weight: 400;
+  margin-top: 5px;
+}
+
+.contact-info {
+  display: grid;
+  gap: 5px;
+  margin-top: 10px;
+  font-size: 11.6px;
+}
+
+.contact-info a,
+.resume-links a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.resume-section {
+  border-bottom: 1px solid #cfcfcf;
+  margin-bottom: 17px;
+  padding-bottom: 17px;
+}
+
+.resume-section h3 {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 13px;
+  margin-bottom: 12px;
+}
+
+.resume-section p {
+  font-size: 11.6px;
+}
+
+.skills-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  font-size: 11.6px;
+}
+
+.skills-list span:not(:last-child)::after {
+  content: ",";
+}
+
+.resume-item {
+  margin-bottom: 13px;
+}
+
+.item-top {
+  align-items: baseline;
+  display: flex;
+  gap: 14px;
+  justify-content: space-between;
+}
+
+.item-top h4 {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 13px;
+}
+
+.item-top span,
+.muted,
+.resume-links {
+  color: #4b5563;
+  font-size: 11px;
+}
+
+.resume-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 3px;
+}
+
+.resume-item,
+.resume-section {
+  break-inside: avoid;
+  page-break-inside: avoid;
+}
+
+.hidden {
+  display: none;
+}

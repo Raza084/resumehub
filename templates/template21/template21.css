@@ -1,0 +1,146 @@
+.resume-page {
+  --resume-accent: #1f3d52;
+  width: 794px;
+  min-height: 1123px;
+  margin: 0 auto;
+  background: #ffffff;
+  color: #4b5563;
+  display: grid;
+  font-family: Arial, Helvetica, sans-serif;
+  grid-template-columns: 270px 1fr;
+  line-height: 1.38;
+  padding: 34px 30px;
+  box-shadow: 0 22px 55px rgba(15, 23, 42, 0.15);
+}
+
+.resume-page.font-serif { font-family: Georgia, "Times New Roman", serif; }
+.resume-page.font-sans { font-family: Arial, Helvetica, sans-serif; }
+.resume-page.font-mono { font-family: "Courier New", monospace; }
+.resume-page.spacing-compact { line-height: 1.25; }
+.resume-page.spacing-relaxed { line-height: 1.56; }
+
+.resume-aside {
+  border-right: 1px solid #d8e1eb;
+}
+
+.identity-block {
+  background: var(--resume-accent-dark);
+  color: #ffffff;
+  padding: 28px 30px 34px;
+}
+
+.identity-block h1 {
+  font-size: 29px;
+  line-height: 1.05;
+  text-transform: uppercase;
+}
+
+.identity-block h2 {
+  color: #d6e8e6;
+  font-size: 13px;
+  font-weight: 500;
+  margin-top: 7px;
+  text-transform: uppercase;
+}
+
+.identity-block > p {
+  color: #e8edf4;
+  font-size: 11.2px;
+  margin-top: 24px;
+}
+
+.resume-aside .resume-section {
+  padding: 0 30px;
+}
+
+.resume-main {
+  padding: 24px 28px;
+}
+
+.contact-info {
+  display: grid;
+  gap: 9px;
+  font-size: 11px;
+  overflow-wrap: anywhere;
+}
+
+.contact-info a,
+.resume-links a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.resume-section {
+  margin-bottom: 24px;
+}
+
+.resume-section h3 {
+  color: #111111;
+  font-size: 14px;
+  font-weight: 800;
+  letter-spacing: 2px;
+  margin-bottom: 11px;
+  text-transform: uppercase;
+}
+
+.resume-section p {
+  font-size: 11.6px;
+}
+
+.skills-list {
+  display: grid;
+  gap: 7px;
+  font-size: 11px;
+}
+
+.skills-list span::before {
+  content: "• ";
+}
+
+.resume-item {
+  margin-bottom: 15px;
+}
+
+.item-top {
+  align-items: baseline;
+  display: flex;
+  gap: 14px;
+  justify-content: space-between;
+}
+
+.item-top h4 {
+  color: #111111;
+  font-size: 12.8px;
+  font-weight: 800;
+}
+
+.item-top span,
+.muted,
+.resume-links {
+  color: #6b7280;
+  font-size: 10.8px;
+}
+
+.resume-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 3px;
+}
+
+.resume-page .resume-photo-wrap {
+  border-color: #ffffff;
+  height: calc(var(--resume-photo-size, 88px) * 2.1);
+  margin-bottom: 20px;
+  width: min(100%, calc(var(--resume-photo-size, 88px) * 2.4));
+}
+
+.resume-item,
+.resume-section {
+  break-inside: avoid;
+  page-break-inside: avoid;
+}
+
+.hidden {
+  display: none;
+}

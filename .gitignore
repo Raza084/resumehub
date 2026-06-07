@@ -1,0 +1,22 @@
+# macOS
+.DS_Store
+
+# IDE
+.vscode/
+.idea/
+
+# Maven
+target/
+
+# Logs
+*.log
+
+# Environment files
+.env
+.env.*
+
+# OS files
+Thumbs.db
+
+# Gemini
+.gemini/

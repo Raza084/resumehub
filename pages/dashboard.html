@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ResumeHub | Dashboard</title>
+    <link rel="icon" type="image/png" href="/assets/icons/favicon-32.png" />
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/auth.css" />
+    <link rel="stylesheet" href="/css/dashboard.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  </head>
+  <body class="dashboard-body-page">
+    <header class="navbar">
+      <a class="logo" href="/">
+        <img class="logo-image" src="/assets/icons/resumehub-logo.png" alt="ResumeHub" />
+      </a>
+      <a class="navbar-wordmark" href="/" aria-label="ResumeHub home">
+        Resume<span>Hub</span>
+      </a>
+      <nav>
+        <ul class="nav-links"></ul>
+      </nav>
+      <div class="auth-buttons"></div>
+    </header>
+
+    <main class="dashboard-page">
+      <section class="dashboard-hero">
+        <div class="dashboard-hero-inner">
+          <div class="dashboard-hero-copy">
+            <p class="eyebrow">Your workspace</p>
+            <h1>Welcome back, <span id="dashboardUserName">there</span></h1>
+            <p>Pick up where you left off, refine a draft, or start a fresh resume in minutes.</p>
+            <div class="dashboard-hero-actions">
+              <button id="createResumeBtn" class="primary-btn" type="button">
+                <i class="fa-solid fa-plus"></i>
+                New Resume
+              </button>
+              <a class="secondary-btn" href="/templates">
+                <i class="fa-solid fa-layer-group"></i>
+                Browse Templates
+              </a>
+            </div>
+          </div>
+          <div class="dashboard-hero-panel" aria-hidden="true">
+            <div class="dashboard-hero-panel-icon">
+              <i class="fa-solid fa-file-lines"></i>
+            </div>
+            <p>Build polished, ATS-friendly resumes with live preview and professional templates.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="dashboard-content">
+        <div class="dashboard-stats" id="dashboardStats">
+          <article class="dashboard-stat-card">
+            <div class="dashboard-stat-icon">
+              <i class="fa-solid fa-folder-open"></i>
+            </div>
+            <div>
+              <p class="dashboard-stat-label">Total resumes</p>
+              <p class="dashboard-stat-value" id="statTotal">—</p>
+            </div>
+          </article>
+          <article class="dashboard-stat-card">
+            <div class="dashboard-stat-icon">
+              <i class="fa-solid fa-clock"></i>
+            </div>
+            <div>
+              <p class="dashboard-stat-label">Last edited</p>
+              <p class="dashboard-stat-value" id="statLastEdited">—</p>
+            </div>
+          </article>
+          <article class="dashboard-stat-card">
+            <div class="dashboard-stat-icon">
+              <i class="fa-solid fa-palette"></i>
+            </div>
+            <div>
+              <p class="dashboard-stat-label">Templates used</p>
+              <p class="dashboard-stat-value" id="statTemplates">—</p>
+            </div>
+          </article>
+        </div>
+
+        <div class="dashboard-section-header">
+          <div>
+            <h2>Your resumes</h2>
+            <p>Continue editing or manage saved drafts from your library.</p>
+          </div>
+        </div>
+
+        <div id="resumeLoading" class="dashboard-grid dashboard-loading">
+          <article class="dashboard-skeleton-card"></article>
+          <article class="dashboard-skeleton-card"></article>
+          <article class="dashboard-skeleton-card"></article>
+        </div>
+
+        <div id="resumeEmpty" class="dashboard-empty hidden">
+          <div class="dashboard-empty-icon">
+            <i class="fa-solid fa-wand-magic-sparkles"></i>
+          </div>
+          <h2>No resumes yet</h2>
+          <p>Create your first resume and it will appear here, ready to edit anytime.</p>
+          <button class="primary-btn" type="button" onclick="document.getElementById('createResumeBtn').click()">
+            <i class="fa-solid fa-plus"></i>
+            Create your first resume
+          </button>
+        </div>
+
+        <div id="resumeList" class="dashboard-grid hidden"></div>
+
+        <div class="dashboard-quick-links">
+          <a class="dashboard-quick-link" href="/profile">
+            <i class="fa-solid fa-user-gear"></i>
+            <span>Account settings</span>
+            <i class="fa-solid fa-arrow-right dashboard-quick-link-arrow"></i>
+          </a>
+          <a class="dashboard-quick-link" href="/templates">
+            <i class="fa-solid fa-table-cells-large"></i>
+            <span>Explore all templates</span>
+            <i class="fa-solid fa-arrow-right dashboard-quick-link-arrow"></i>
+          </a>
+        </div>
+      </section>
+    </main>
+
+    <script src="/js/api.js"></script>
+    <script src="/js/dashboard.js"></script>
+  </body>
+</html>
