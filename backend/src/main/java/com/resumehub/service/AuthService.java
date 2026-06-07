@@ -29,8 +29,7 @@ public class AuthService {
     private final AuthenticationManager authenticationManager;
     private final PasswordResetTokenRepository passwordResetTokenRepository;
 
-    @org.springframework.beans.factory.annotation.Value("${app.resend.api-key:}")
-    private String resendApiKey;
+
 
     public AuthService(UserRepository userRepository,
                        PasswordEncoder passwordEncoder,
@@ -108,25 +107,21 @@ public class AuthService {
     }
 
     private void sendOtpEmail(String toEmail, String otp) {
-        String apiKey = resendApiKey != null && !resendApiKey.trim().isEmpty() 
-                ? resendApiKey 
-                : System.getenv("RESEND_API_KEY");
-
-        if (apiKey == null || apiKey.trim().isEmpty()) {
-            System.err.println("Failed to send OTP email: RESEND_API_KEY is not configured.");
+        String webhookUrl = System.getenv("EMAIL_WEBHOOK_URL");
+        if (webhookUrl == null || webhookUrl.trim().isEmpty()) {
+            System.err.println("Failed to send OTP email: EMAIL_WEBHOOK_URL is not configured.");
             return;
         }
 
         try {
             String jsonPayload = String.format(
-                "{\"from\":\"ResumeHub <onboarding@resend.dev>\",\"to\":[\"%s\"],\"subject\":\"ResumeHub - Password Reset OTP\",\"html\":\"<h3>ResumeHub Password Reset Request</h3><p>Hello,</p><p>You requested a password reset. Your 6-digit OTP code is:</p><h2 style='color:#0f766e;'>%s</h2><p>This code will expire in 15 minutes.</p><p>If you did not request this reset, please ignore this email.</p>\"}",
+                "{\"email\":\"%s\",\"otp\":\"%s\"}",
                 toEmail, otp
             );
 
             java.net.http.HttpClient client = java.net.http.HttpClient.newHttpClient();
             java.net.http.HttpRequest request = java.net.http.HttpRequest.newBuilder()
-                    .uri(java.net.URI.create("https://api.resend.com/emails"))
-                    .header("Authorization", "Bearer " + apiKey.trim())
+                    .uri(java.net.URI.create(webhookUrl.trim()))
                     .header("Content-Type", "application/json")
                     .POST(java.net.http.HttpRequest.BodyPublishers.ofString(jsonPayload, java.nio.charset.StandardCharsets.UTF_8))
                     .build();
@@ -134,12 +129,12 @@ public class AuthService {
             java.net.http.HttpResponse<String> response = client.send(request, java.net.http.HttpResponse.BodyHandlers.ofString());
 
             if (response.statusCode() >= 200 && response.statusCode() < 300) {
-                System.out.println("OTP email sent successfully via Resend API. Status: " + response.statusCode());
+                System.out.println("OTP email webhook triggered successfully. Status: " + response.statusCode());
             } else {
-                System.err.println("Failed to send OTP email via Resend. Status: " + response.statusCode() + ", Body: " + response.body());
+                System.err.println("Failed to trigger OTP email webhook. Status: " + response.statusCode() + ", Body: " + response.body());
             }
         } catch (Exception e) {
-            System.err.println("Failed to send OTP email via Resend API: " + e.getMessage());
+            System.err.println("Failed to send OTP email via Webhook: " + e.getMessage());
         }
     }
 
